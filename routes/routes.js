@@ -16,6 +16,12 @@ const router = app => {
         executeQuery (res, query);
     });
 
+     // Room2
+     app.get('/rooms', function (req, res) {  
+        var query = `select * from Rooms`;
+        executeQuery(res,query);
+    });
+
 
     // Producer
     app.get('/producers', function (req, res) {  
