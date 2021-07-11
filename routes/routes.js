@@ -5,12 +5,6 @@ const router = (app) => {
     res.send({ message: "Node.js and Express REST API" });
   });
 
-  // Room5
-  app.get("/rooms", function (req, res) {
-    var query = `select * from Rooms`;
-    executeQuery(res, query);
-  });
-
   // Room
   app.get("/rooms", function (req, res) {
     var query = `select * from Rooms`;
@@ -107,11 +101,19 @@ const router = (app) => {
     executeQuery(res, query);
   });
 
-  // Check delete
-  app.get("/products/checkDelete/:id", (req, res) => {
-    var query = "SELECT * FROM Orders WHERE productId= '" + req.params.id + "'";
+  app.get("/order/:id", (req, res) => {
+    var query = "SELECT * FROM Orders WHERE id= '" + req.params.id + "'";
+    executeQuery(res, query);
+  });
+
+  // Orders_detail
+  app.get("/OrderDetails", (req, res) => {
+    var query = "SELECT * FROM Orders_Details";
+    executeQuery(res, query);
+  });
+
+  app.get("/OrderDetails/:id", (req, res) => {
+    var query = "SELECT * FROM Orders_Details WHERE id= '" + req.params.id + "'";
     executeQuery(res, query);
   });
 };
-
-module.exports = router;
