@@ -16,7 +16,7 @@ const router = app => {
         executeQuery (res, query);
     });
 
-     // Room2
+     // Room3
      app.get('/rooms', function (req, res) {  
         var query = `select * from Rooms`;
         executeQuery(res,query);
@@ -93,4 +93,3 @@ const router = app => {
 
 }
 
-module.exports = router;
