@@ -108,7 +108,7 @@ const router = (app) => {
 
   // Orders_detail
   app.get("/OrderDetails", (req, res) => {
-    var query = "SELECT * FROM Orders_Details";
+    var query = "SELECT * FROM Order_Details";
     executeQuery(res, query);
   });
 
