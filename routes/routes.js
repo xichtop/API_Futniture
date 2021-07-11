@@ -117,3 +117,5 @@ const router = (app) => {
     executeQuery(res, query);
   });
 };
+
+module.exports = router;
