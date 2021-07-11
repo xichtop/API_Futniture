@@ -5,7 +5,7 @@ const router = (app) => {
     res.send({ message: "Node.js and Express REST API" });
   });
 
-  // Room1
+  // Room5
   app.get("/rooms", function (req, res) {
     var query = `select * from Rooms`;
     executeQuery(res, query);
