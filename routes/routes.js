@@ -5,21 +5,31 @@ const router = (app) => {
     res.send({ message: "Node.js and Express REST API" });
   });
 
-  // Room
-  app.get("/rooms", function (req, res) {
-    var query = `select * from Rooms`;
-    executeQuery(res, query);
-  });
-
   // Room1
   app.get("/rooms", function (req, res) {
     var query = `select * from Rooms`;
     executeQuery(res, query);
   });
 
+  // Room
+  app.get("/rooms", function (req, res) {
+    var query = `select * from Rooms`;
+    executeQuery(res, query);
+  });
+
+  app.get("/rooms/:id", (req, res) => {
+    var query = "SELECT * FROM Rooms WHERE Id= '" + req.params.id + "'";
+    executeQuery(res, query);
+  });
+
   // Producer
   app.get("/producers", function (req, res) {
     var query = `select * from Producers`;
+    executeQuery(res, query);
+  });
+
+  app.get("/producers/:id", (req, res) => {
+    var query = "SELECT * FROM Producers WHERE Id= '" + req.params.id + "'";
     executeQuery(res, query);
   });
 
