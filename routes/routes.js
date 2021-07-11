@@ -113,7 +113,7 @@ const router = (app) => {
   });
 
   app.get("/OrderDetails/:id", (req, res) => {
-    var query = "SELECT * FROM Orders_Details WHERE id= '" + req.params.id + "'";
+    var query = "SELECT * FROM Order_Details WHERE id= '" + req.params.id + "'";
     executeQuery(res, query);
   });
 };
