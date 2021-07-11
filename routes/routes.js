@@ -11,10 +11,21 @@ const router = app => {
         executeQuery(res,query);
     });
 
+    app.get('/rooms/:id', (req, res) => {
+        var query = "SELECT * FROM Rooms WHERE Id= '"+req.params.id+"'";
+        executeQuery (res, query);
+    });
+
+
     // Producer
     app.get('/producers', function (req, res) {  
         var query = `select * from Producers`;
         executeQuery(res,query);
+    });
+
+    app.get('/producers/:id', (req, res) => {
+        var query = "SELECT * FROM Producers WHERE Id= '"+req.params.id+"'";
+        executeQuery (res, query);
     });
 
     // Product
