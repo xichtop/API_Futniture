@@ -45,7 +45,7 @@ const router = (app) => {
   });
 
   app.post("/products", (req, res) => {
-    //var query = "INSERT INTO [Products] (id,name,price,oldPrice,photo,amount,roomId,producerId) VALUES ('"+req.body.id+"','"+req.body.name+"','"+req.body.price+"','"+req.body.oldPrice+"','"+req.body.photo+"','"+req.body.amount+"','"+req.body.roomId+"','"+req.body.producerId+"')";
+    
     var query =
       "INSERT INTO [Products] (id,name,price,oldPrice,photo,amount,roomId,producerId) VALUES ('" +
       req.body.id +
@@ -71,8 +71,18 @@ const router = (app) => {
     var query =
       "UPDATE Products SET name= '" +
       req.body.name +
-      "', email= '" +
-      req.body.email +
+      "', price= '" +
+      req.body.price +
+      "', oldPrice= '" +
+      req.body.oldPrice +
+      "', photo= '" +
+      req.body.photo +
+      "', amount= '" +
+      req.body.amount +
+      "', roomId= '" +
+      req.body.roomId +
+      "', producerId= '" +
+      req.body.producerId +
       "'   WHERE Id= '" +
       req.params.id +
       "'";
@@ -95,9 +105,19 @@ const router = (app) => {
     executeQuery(res, query);
   });
 
+  app.delete("/users/:id", (req, res) => {
+    var query = "DELETE FROM Users WHERE Id= '" + req.params.id + "'";
+    executeQuery(res, query);
+  });
+
   // Orders
   app.get("/orders", (req, res) => {
     var query = "SELECT * FROM Orders";
+    executeQuery(res, query);
+  });
+
+  app.get("/orders/users/:id", (req, res) => {
+    var query = "SELECT * FROM Orders WHERE userId = '" + req.params.id + "'";
     executeQuery(res, query);
   });
 
