@@ -2,7 +2,7 @@ var sql = require("mssql");
 // config for your database
 config = {
   user: "sa",
-  password: "260699",
+  password: "123",
   server: "localhost",
   database: "FurnitureAPI",
   post: 1433,

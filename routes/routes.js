@@ -45,7 +45,6 @@ const router = (app) => {
   });
 
   app.post("/products", (req, res) => {
-    
     var query =
       "INSERT INTO [Products] (id,name,price,oldPrice,photo,amount,roomId,producerId) VALUES ('" +
       req.body.id +
@@ -126,6 +125,20 @@ const router = (app) => {
     executeQuery(res, query);
   });
 
+  app.post("/orders", (req, res) => {
+    var query =
+      "INSERT INTO [Orders] (userId,bought,date,status) VALUES ('" +
+      req.body.userId +
+      "','" +
+      req.body.bought +
+      "'," +
+      req.body.date +
+      "," +
+      req.body.status +
+      "')";
+    executeQuery(res, query);
+  });
+
   // Orders_detail
   app.get("/OrderDetails", (req, res) => {
     var query = "SELECT * FROM Order_Details";
@@ -133,7 +146,19 @@ const router = (app) => {
   });
 
   app.get("/OrderDetails/:id", (req, res) => {
-    var query = "SELECT * FROM Order_Details WHERE id= '" + req.params.id + "'";
+    var query = "SELECT * FROM Order_Details WHERE orderId= '" + req.params.id + "'";
+    executeQuery(res, query);
+  });
+
+  app.post("/OrderDetails", (req, res) => {
+    var query =
+      "INSERT INTO [Order_Details] (orderId,productId,quantity) VALUES ('" +
+      req.body.orderId +
+      "','" +
+      req.body.productId +
+      "'," +
+      req.body.quantity +
+      "')";
     executeQuery(res, query);
   });
 };
