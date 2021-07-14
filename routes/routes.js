@@ -127,15 +127,24 @@ const router = (app) => {
 
   app.post("/orders", (req, res) => {
     var query =
-      "INSERT INTO [Orders] (userId,bought,date,status) VALUES ('" +
+      "INSERT INTO [Orders] (id,userId,bought,date,status) VALUES (" +
+      req.body.id +
+      ",'" +
       req.body.userId +
-      "','" +
-      req.body.bought +
       "'," +
+      1 +
+      ",'" +
       req.body.date +
-      "," +
+      "','" +
       req.body.status +
       "')";
+
+    console.log(query);
+    executeQuery(res, query);
+  });
+
+  app.put("/orders/:id", (req, res) => {
+    var query = "UPDATE Orders SET bought = 1 WHERE Id= " + req.params.id;
     executeQuery(res, query);
   });
 
@@ -152,13 +161,13 @@ const router = (app) => {
 
   app.post("/OrderDetails", (req, res) => {
     var query =
-      "INSERT INTO [Order_Details] (orderId,productId,quantity) VALUES ('" +
+      "INSERT INTO [Order_Details] (orderId,productId,quantity) VALUES (" +
       req.body.orderId +
-      "','" +
+      ",'" +
       req.body.productId +
       "'," +
       req.body.quantity +
-      "')";
+      ")";
     executeQuery(res, query);
   });
 };
