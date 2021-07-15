@@ -104,6 +104,48 @@ const router = (app) => {
     executeQuery(res, query);
   });
 
+  app.post("/users", (req, res) => {
+    var query =
+      "INSERT INTO [Users] (username,password,fullname,photo,email,phone,address,admin) VALUES ('" +
+      req.body.username +
+      "','" +
+      req.body.password +
+      "',N'" +
+      req.body.fullname +
+      "',N'" +
+      req.body.photo +
+      "','" +
+      req.body.email +
+      "','" +
+      req.body.phone +
+      "',N'" +
+      req.body.address +
+      "','" +
+      req.body.admin +
+      "')";
+    executeQuery(res, query);
+  });
+
+  app.put("/users/:id", (req, res) => {
+    var query =
+    "UPDATE Users SET password= '" +
+    req.body.password +
+    "', fullname= N'" +
+    req.body.fullname +
+    "', photo= N'" +
+    req.body.photo +
+    "', email= '" +
+    req.body.email +
+    "', address= N'" +
+    req.body.address +
+    "', admin= '" +
+    req.body.admin +
+    "'   WHERE username= '" +
+    req.params.username +
+    "'";
+    executeQuery(res, query);
+  });
+
   app.delete("/users/:id", (req, res) => {
     var query = "DELETE FROM Users WHERE Id= '" + req.params.id + "'";
     executeQuery(res, query);
